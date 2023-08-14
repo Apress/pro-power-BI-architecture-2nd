@@ -1,0 +1,21 @@
+login using admin account
+----------------------------------------
+only needed for the first time on each machine:
+Install-Package ExchangeOnlineManagement
+Import-Module ExchangeOnlineManagement
+----------------------------------------
+needed each time:
+Connect-ExchangeOnline -UserPrincipalName reza@radacad.com
+
+---------------------------------------
+***
+get the audit log
+
+only needed for the first time on each machine:
+Install-Package ExchangePowerShell
+Import-Module ExchangePowerShell
+----------------------------------------
+needed each time:
+Search-UnifiedAuditLog -StartDate (Get-Date).AddDays(-90) -EndDate (Get-Date) -RecordType PowerBIAudit -ResultSize 10
+
+Search-UnifiedAuditLog -StartDate (Get-Date).AddDays(-90) -EndDate (Get-Date) -RecordType PowerBIAudit -ResultSize 5000 | ConvertTo-Csv | Out-File c:\PowerBIAuditLog.csv
